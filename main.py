@@ -6,6 +6,24 @@ import pandas as pd
 import time
 import re
 
+def create_question() -> pd.DataFrame:
+    return pd.DataFrame({
+        'DÍVIDA LÍQUIDA - LUCRO LÍQUIDO': [],
+        'DIVIDENDOS': [],	
+        'Crescimento de receitas lucro >5% ultimos 5 anos': [],
+        'P/VP abaixo de 5': [],
+        'Líquida/EBITDA é menor que 2': [],
+        '+30 anos de mercado? (Fundação)': [],
+        'P/L < 30': [],
+        'livre de controle ESTATAL ou concentração em cliente único?': [],
+        'LUCRO OPERACIONAL>0': [],
+        'pesquisa e inovação?': [],
+        'Tem uma boa gestão?': [],
+        'É líder nacional ou mundial': [],
+        'BLUE CHIP?': [],
+        'PERENIDADE O setor em que atua +100 anos?': [],     
+        
+    })
 
 def create_data_frame() -> pd.DataFrame:
     return pd.DataFrame({
@@ -26,21 +44,15 @@ def create_data_frame() -> pd.DataFrame:
         'EBIT': [],
         'Impostos': [],
         'Margem EBITA': [],
+        'Dy': [],
+        'P/VP': [],
+        'P/L': [],
 
     })
 
 
 def extract_string_from_xpath(xpath: str, browser: webdriver.Chrome) -> str:
     return browser.find_element("xpath", xpath).text
-
-def extract_numeric_from_xpath(xpath: str, browser: webdriver.Chrome) -> float:
-    percentage_text = browser.find_element_by_xpath(xpath).text
-    percentage_text = percentage_text.replace(',', '.')  # Replace comma with dot for decimals
-    percentage_text = percentage_text.rstrip('%')  # Remove the percentage sign from the end
-    return float(f'{percentage_text}%')
-
-    return percentage_text + '%'  # Add the percentage sign back
-
 
 def extract_numeric_from_xpath(xpath: str, browser: webdriver.Chrome) -> str:
     value = browser.find_element("xpath", xpath) \
@@ -68,9 +80,12 @@ def extract_numeric_from_xpath(xpath: str, browser: webdriver.Chrome) -> str:
     return float(re.sub("[^\\d.-]", "", value))
 
 def main():
+    data = create_data_frame()
+    question = create_question()
+    
     #valor = input('Digite qual empresa deseja pesquisar')
     empresa = input('Digite o codigo da empresa: ')
-    data = create_data_frame()
+    
 
     # Abre o navegador Chrome
     browser = webdriver.Chrome()
@@ -159,7 +174,17 @@ def main():
     xpath_roic = '//*[@id="table-balance-results"]/tbody/tr[15]/td[2]'
     roic = extract_numeric_from_xpath(xpath_roic, browser)
 
+    xpath_dy = '//*[@id="cards-ticker"]/div[5]/div[2]/span'
+    dy= extract_numeric_from_xpath(xpath_dy, browser)
 
+    xpath_pvp = '//*[@id="cards-ticker"]/div[4]/div[2]/span'
+    pvp = extract_numeric_from_xpath(xpath_pvp, browser)
+
+    xpath_growth5y = '//*[@id="checklist"]/div/div[1]/div[7]/label/span'
+    growth5y = extract_numeric_from_xpath(xpath_growth5y, browser)
+
+    xpath_pl= '//*[@id="cards-ticker"]/div[3]/div[2]/span'
+    pl = extract_numeric_from_xpath(xpath_pl, browser)
 
     data.loc[len(data)] = {\
 
@@ -169,19 +194,38 @@ def main():
                            'Margem Ebita': ebit_margin, 'Margem Liquida': net_margin, \
                            'Divida Bruta': gross_debt,  'ROE': roe, 'Receita Liquida': receita_liquida, \
                            'EBITA': ebita, 'EBIT': ebit, 'Impostos': tax, \
-                           'Margem EBITA': ebit_margin, 'Lucro Liquido': net_revenue, 'Roic': roic                      
-                                                    
+                           'Margem EBITA': ebit_margin, 'Lucro Liquido': net_revenue, 'Roic': roic, 'Dy': dy,                  
+                           'P/VP': pvp, 'P/L': pl                   
  }
+    
+
+
+    question.loc[len(question)] = {\
+        'DÍVIDA LÍQUIDA - LUCRO LÍQUIDO': str(1) if float(net_revenue) - float(divida_liquida) > 0 else str(0),
+        'DIVIDENDOS': str(1) if float(dy) > 0 else str(0),
+        #'Crescimento de receitas lucro >5% ultimos 5 anos': str(1) if growth5y else str(0) 
+        'P/VP abaixo de 5': str(1) if float(pvp) < 5 else str(0),
+        'Líquida/EBITDA é menor que 2': str(1) if (float(divida_liquida) / float(ebita)) < 2 else str(0),
+        'P/L < 30': str(1) if float(pl) < 30 else str(0),
+}
+
+
 
     print(data)
+    print(question)
 
     data.to_csv('dados.csv', sep=';', encoding='utf-8')
+    question.to_csv('questions.csv', sep=';', encoding='utf-8')
 
     loaded_data = pd.read_csv('dados.csv', sep=';', encoding='utf-8')
+    loaded_question = pd.read_csv('questions.csv', sep=';', encoding='utf-8')
 
     print(loaded_data)
-  
+    print(loaded_question)
+
     browser.quit()
+
+
 
 if __name__ == "__main__":
     main()
