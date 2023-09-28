@@ -3,9 +3,10 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import pandas as pd
+
+import datetime
 import time
 import re
-import datetime
 
 def create_question() -> pd.DataFrame:
     return pd.DataFrame({

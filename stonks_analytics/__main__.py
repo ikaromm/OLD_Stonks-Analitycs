@@ -1,15 +1,20 @@
+from stonks_analytics.utils.funcs import *
+from stonks_analytics.utils.config import *
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import pandas as pd
+
+import datetime
 import time
 import re
-import datetime
-from Functions.funcs import *
+import os
 
-def main():
-   
+
+
+def main():   
     data = create_data_frame()
     question = create_question()
     
@@ -164,6 +169,9 @@ def main():
     question.loc[len(question)] = {\
         'Soma_total': sum(question.sum(axis=1))
         }
+
+    if not os.path.exists('csv'):
+        os.mkdir('csv')
     
     data.to_csv('csv/dados.csv', sep=';', encoding='utf-8', index=False)
     question.to_csv('csv/questions.csv', sep=';', encoding='utf-8', index=False)
