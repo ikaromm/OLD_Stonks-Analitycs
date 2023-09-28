@@ -1,6 +1,6 @@
 import openai
 
-openai.api_key = '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'
+openai.api_key = ''
 empresa = input('Digite o codigo da empresa: ')
 
 
