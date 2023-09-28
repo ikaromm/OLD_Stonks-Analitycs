@@ -19,3 +19,7 @@ TEMPO DE MERCADO	Tem mais de 30 anos de mercado? (Funda??o)
 P/L	O Preço/Lucro da empresa está abaixo de 30?	
 INDEPENDÊNCIA	É livre de controle ESTATAL ou concentração em cliente único?	
 LUCRO OPERACIONAL	A empresa teve lucro operacional no ?ltimo exerc?cio?	
+---------------------------
+A resolver
+1) Como manter as empresas no csv e só atualizar os valores 
+2) Como conectar o bard

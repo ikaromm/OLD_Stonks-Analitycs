@@ -6,6 +6,7 @@ import pandas as pd
 import time
 import re
 
+
 def create_question() -> pd.DataFrame:
     return pd.DataFrame({
         'DÍVIDA LÍQUIDA - LUCRO LÍQUIDO': [],
@@ -79,10 +80,16 @@ def extract_numeric_from_xpath(xpath: str, browser: webdriver.Chrome) -> str:
 
     return float(re.sub("[^\\d.-]", "", value))
 
+
 def main():
+    # Create a BardAPI client
+    
+
+# Print the generated text
     data = create_data_frame()
     question = create_question()
     
+
     #valor = input('Digite qual empresa deseja pesquisar')
     empresa = input('Digite o codigo da empresa: ')
     
@@ -209,13 +216,11 @@ def main():
         'P/L < 30': str(1) if float(pl) < 30 else str(0),
 }
 
-
-
     print(data)
     print(question)
 
-    data.to_csv('dados.csv', sep=';', encoding='utf-8')
-    question.to_csv('questions.csv', sep=';', encoding='utf-8')
+    data.to_csv('dados.csv', sep=';', encoding='utf-8', index=False)
+    question.to_csv('questions.csv', sep=';', encoding='utf-8', index=False)
 
     loaded_data = pd.read_csv('dados.csv', sep=';', encoding='utf-8')
     loaded_question = pd.read_csv('questions.csv', sep=';', encoding='utf-8')
@@ -225,7 +230,6 @@ def main():
 
     browser.quit()
 
-
-
 if __name__ == "__main__":
     main()
+
