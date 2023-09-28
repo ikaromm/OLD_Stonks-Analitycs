@@ -8,17 +8,11 @@ import re
 import datetime
 from Functions.funcs import *
 
-
-
 def main():
-    # Create a BardAPI client
-  
-
-# Print the generated text
+   
     data = create_data_frame()
     question = create_question()
     
-    #valor = input('Digite qual empresa deseja pesquisar')
     empresa = input('Digite o codigo da empresa: ')
           
     browser = webdriver.Chrome()
@@ -35,7 +29,6 @@ def main():
     first_result.click()
 
     time.sleep(5)
-    #Nome da Empresa
     xpath_company_name = '//*[@id="header_action"]/div[1]/div[2]/h2'
     company_name = extract_string_from_xpath(xpath_company_name, browser)
     
@@ -133,11 +126,9 @@ def main():
     data_abertura = extract_date_from_xpath(xpath_data_abertura, browser)
     data_str = str(data_abertura)
     data_abertura = data_str[-4:]
-
     
     current_date = datetime.datetime.now()
     current_year = current_date.year
-
     existence_time =  current_year- int(data_abertura)
 
     data.loc[len(data)] = {\
@@ -152,26 +143,30 @@ def main():
                            'P/VP': pvp, 'P/L': pl                   
  }
     
-
-
     question.loc[len(question)] = {\
-        'DÍVIDA LÍQUIDA - LUCRO LÍQUIDO': str(1) if float(net_revenue) - float(divida_liquida) > 0 else str(0),
-        'DIVIDENDOS': str(1) if float(dy) > 0 else str(0),
-        #'Crescimento de receitas lucro >5% ultimos 5 anos': str(1) if growth5y else str(0) 
-        'P/VP abaixo de 5': str(1) if float(pvp) < 5 else str(0),
-        'Líquida/EBITDA é menor que 2': str(1) if (float(divida_liquida) / float(ebita)) < 2 else str(0),
-        'P/L < 30': str(1) if float(pl) < 30 else str(0),
-        '+30 anos de mercado? (Fundação)': str(1) if float(existence_time) > 30 else str(0),
-        'LUCRO OPERACIONAL>0': str(1) if float(ebit) > 0 else str(0),
 
+        'DÍVIDA LÍQUIDA - LUCRO LÍQUIDO': 1 if float(net_revenue) - float(divida_liquida) > 0 else 0,
+        'DIVIDENDOS': 1 if float(dy) > 0 else 0,
+        #'Crescimento de receitas lucro >5% ultimos 5 anos': str(1) if growth5y else str(0) 
+        'P/VP abaixo de 5': 1 if float(pvp) < 5 else 0,
+        'Líquida/EBITDA é menor que 2': 1 if (float(divida_liquida) / float(ebita)) < 2 else 0,
+        'P/L < 30': 1 if float(pl) < 30 else 0,
+        '+30 anos de mercado? (Fundação)': 1 if float(existence_time) > 30 else 0,
+        'LUCRO OPERACIONAL>0': 1 if float(ebit) > 0 else 0,
+        
 
 } 
+    
+    print(question.sum)
+    print(f'A soma das perguntas é {question.sum(axis=1)}')
     print(data)
-    print(question)
-
+    
+    question.loc[len(question)] = {\
+        'Soma_total': sum(question.sum(axis=1))
+        }
+    
     data.to_csv('csv/dados.csv', sep=';', encoding='utf-8', index=False)
     question.to_csv('csv/questions.csv', sep=';', encoding='utf-8', index=False)
-
 
     loaded_data = pd.read_csv('csv/dados.csv', sep=';', encoding='utf-8')
     loaded_question = pd.read_csv('csv/questions.csv', sep=';', encoding='utf-8')

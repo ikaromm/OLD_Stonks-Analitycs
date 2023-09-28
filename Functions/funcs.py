@@ -11,18 +11,19 @@ def create_question() -> pd.DataFrame:
     return pd.DataFrame({
         'DÍVIDA LÍQUIDA - LUCRO LÍQUIDO': [], #feito
         'DIVIDENDOS': [],	#feito
-        'Crescimento de receitas lucro >5% ultimos 5 anos': [], 
+        'LUCRO OPERACIONAL>0': [], #feito
         'P/VP abaixo de 5': [], #feito
         'Líquida/EBITDA é menor que 2': [], #feito
         '+30 anos de mercado? (Fundação)': [], #feito
         'P/L < 30': [], #feito
+        'Crescimento de receitas lucro >5% ultimos 5 anos': [],
         'livre de controle ESTATAL ou concentração em cliente único?': [],
-        'LUCRO OPERACIONAL>0': [], #feito
         'pesquisa e inovação?': [],
         'Tem uma boa gestão?': [],
         'É líder nacional ou mundial': [],
         'BLUE CHIP?': [],
-        'PERENIDADE O setor em que atua +100 anos?': [],     
+        'PERENIDADE O setor em que atua +100 anos?': [],
+        'Soma_total': [] 
         
     })
 
