@@ -101,28 +101,17 @@ def main():
     data = create_data_frame()
     question = create_question()
     
-
     #valor = input('Digite qual empresa deseja pesquisar')
     empresa = input('Digite o codigo da empresa: ')
-    
-    
-    
-    # Abre o navegador Chrome
+          
     browser = webdriver.Chrome()
     wait = WebDriverWait(browser, 10)
-    # Navega até o site da Amazon
     browser.get("https://investidor10.com.br")
-
-    # Aguarde um tempo para a página carregar completamente
-
-    # time.sleep(3)  # Espere 2 segundos (pode ajustar conforme necessário)
 
     search_bar = browser.find_element("xpath", "/html/body/div[3]/div/div/section[1]/div/div/div[1]/div/form/div/span/input[2]")
     wait.until(EC.visibility_of(search_bar))
     search_bar.send_keys(empresa)
     search_bar.submit()
-
-      # Espere 5 segundos (pode ajustar conforme necessário)
 
     first_result = browser.find_element('xpath', '//*[@id="results"]/div/div[2]/div[1]/div/div/a/div/div[1]/img')
     wait.until(EC.visibility_of(first_result))
@@ -271,11 +260,7 @@ def main():
 
     print(loaded_data)
     print(loaded_question)
-
-    
-
-
-
+  
 if __name__ == "__main__":
     main()
 
