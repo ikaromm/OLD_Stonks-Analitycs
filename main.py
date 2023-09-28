@@ -5,19 +5,20 @@ from selenium.webdriver.support import expected_conditions as EC
 import pandas as pd
 import time
 import re
+import datetime
 
 
 def create_question() -> pd.DataFrame:
     return pd.DataFrame({
-        'DÍVIDA LÍQUIDA - LUCRO LÍQUIDO': [],
-        'DIVIDENDOS': [],	
-        'Crescimento de receitas lucro >5% ultimos 5 anos': [],
-        'P/VP abaixo de 5': [],
-        'Líquida/EBITDA é menor que 2': [],
-        '+30 anos de mercado? (Fundação)': [],
-        'P/L < 30': [],
+        'DÍVIDA LÍQUIDA - LUCRO LÍQUIDO': [], #feito
+        'DIVIDENDOS': [],	#feito
+        'Crescimento de receitas lucro >5% ultimos 5 anos': [], 
+        'P/VP abaixo de 5': [], #feito
+        'Líquida/EBITDA é menor que 2': [], #feito
+        '+30 anos de mercado? (Fundação)': [], #feito
+        'P/L < 30': [], #feito
         'livre de controle ESTATAL ou concentração em cliente único?': [],
-        'LUCRO OPERACIONAL>0': [],
+        'LUCRO OPERACIONAL>0': [], #feito
         'pesquisa e inovação?': [],
         'Tem uma boa gestão?': [],
         'É líder nacional ou mundial': [],
@@ -54,6 +55,17 @@ def create_data_frame() -> pd.DataFrame:
 
 def extract_string_from_xpath(xpath: str, browser: webdriver.Chrome) -> str:
     return browser.find_element("xpath", xpath).text
+
+def extract_cnpj_from_xpath(xpath: str, browser: webdriver.Chrome) -> str:
+    value = browser.find_element("xpath", xpath) \
+        .text.replace('.', '')
+    return float(re.sub("[^\\d]", "", value))
+
+def extract_date_from_xpath(xpath: str, browser: webdriver.Chrome) -> str:
+    date = browser.find_element("xpath", xpath) \
+        .text.replace('/', '')
+    return int(re.sub("[^\\d]", "", date))
+
 
 def extract_numeric_from_xpath(xpath: str, browser: webdriver.Chrome) -> str:
     value = browser.find_element("xpath", xpath) \
@@ -93,7 +105,8 @@ def main():
     #valor = input('Digite qual empresa deseja pesquisar')
     empresa = input('Digite o codigo da empresa: ')
     
-
+    
+    
     # Abre o navegador Chrome
     browser = webdriver.Chrome()
     wait = WebDriverWait(browser, 10)
@@ -116,7 +129,6 @@ def main():
     first_result.click()
 
     time.sleep(5)
-
     #Nome da Empresa
     xpath_company_name = '//*[@id="header_action"]/div[1]/div[2]/h2'
     company_name = extract_string_from_xpath(xpath_company_name, browser)
@@ -193,6 +205,35 @@ def main():
     xpath_pl= '//*[@id="cards-ticker"]/div[3]/div[2]/span'
     pl = extract_numeric_from_xpath(xpath_pl, browser)
 
+    xpath_cnpj = '//*[@id="data_about"]/div[2]/div/div[1]/table/tbody/tr[2]/td[2]'
+    cnpj = float(extract_cnpj_from_xpath(xpath_cnpj, browser))
+
+    browser.quit()
+
+    browser = webdriver.Chrome()
+    wait = WebDriverWait(browser, 10)
+
+    browser.get('https://cnpj.linkana.com/')
+    search_bar = browser.find_element("xpath", '//*[@id="app"]/div/main/div/div[1]/div/div[2]/form/div/input')
+    wait.until(EC.visibility_of(search_bar))
+    search_bar.send_keys(cnpj)
+    time.sleep(1)
+    search_bar.submit()
+    time.sleep(1)
+    click_in_company_name = browser.find_element('xpath', '//*[@id="app"]/div/main/div/div/a/div/div[1]/p[1]')
+    click_in_company_name.click()
+    time.sleep(1)
+    xpath_data_abertura = '//*[@id="app"]/div/main/div[2]/ul[1]/li[5]/p'
+    data_abertura = extract_date_from_xpath(xpath_data_abertura, browser)
+    data_str = str(data_abertura)
+    data_abertura = data_str[-4:]
+
+    
+    current_date = datetime.datetime.now()
+    current_year = current_date.year
+
+    existence_time =  current_year- int(data_abertura)
+
     data.loc[len(data)] = {\
 
                            'Empresa': company_name, 'Cotação': price,  \
@@ -214,8 +255,11 @@ def main():
         'P/VP abaixo de 5': str(1) if float(pvp) < 5 else str(0),
         'Líquida/EBITDA é menor que 2': str(1) if (float(divida_liquida) / float(ebita)) < 2 else str(0),
         'P/L < 30': str(1) if float(pl) < 30 else str(0),
-}
+        '+30 anos de mercado? (Fundação)': str(1) if float(existence_time) > 30 else str(0),
+        'LUCRO OPERACIONAL>0': str(1) if float(ebit) > 0 else str(0),
 
+
+} 
     print(data)
     print(question)
 
@@ -228,7 +272,9 @@ def main():
     print(loaded_data)
     print(loaded_question)
 
-    browser.quit()
+    
+
+
 
 if __name__ == "__main__":
     main()
