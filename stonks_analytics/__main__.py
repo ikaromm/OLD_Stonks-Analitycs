@@ -5,6 +5,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.chrome.options import Options
 import pandas as pd
 
 import datetime
@@ -13,6 +14,20 @@ import re
 import os
 
 
+def set_chrome_options() -> Options:
+    """Sets chrome options for Selenium.
+    Chrome options for headless browser is enabled.
+    """
+    chrome_options = webdriver.ChromeOptions()
+
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument('--disable-gpu')
+    chrome_options.add_argument('--disable-dev-shm-usage')
+    chrome_options.add_argument("--window-size=1920,1080")
+
+    return chrome_options
+
 
 def main():   
     data = create_data_frame()
@@ -20,7 +35,7 @@ def main():
     
     empresa = input('Digite o codigo da empresa: ')
           
-    browser = webdriver.Chrome()
+    browser = webdriver.Chrome(options=set_chrome_options())
     wait = WebDriverWait(browser, 10)
     browser.get("https://investidor10.com.br")
 
@@ -114,7 +129,7 @@ def main():
 
     browser.quit()
 
-    browser = webdriver.Chrome()
+    browser = webdriver.Chrome(options=set_chrome_options())
     wait = WebDriverWait(browser, 10)
 
     browser.get('https://cnpj.linkana.com/')

@@ -7,8 +7,10 @@ name = "pypi"
 pandas = "*"
 selenium = "*"
 python-dotenv = "*"
+numpy = "*"
+bardapi = "*"
 
 [dev-packages]
 
 [requires]
-python_version = "3.11"
+python_version = "^3.8"
