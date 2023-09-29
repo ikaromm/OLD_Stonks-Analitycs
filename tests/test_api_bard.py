@@ -1,5 +1,24 @@
 from bardapi import Bard
-import os
-os.environ['_BARD_API_KEY']=""
+from dotenv import load_dotenv
 
-Bard().get_answer("나와 내 동년배들이 좋아하는 뉴진스에 대해서 알려줘")['content']
+import os
+
+
+def get_api_key() -> dict:
+    load_dotenv()
+
+    return {
+        "token": os.environ.get("BARD_API_KEY")
+    }
+
+
+def main():
+    bard = Bard(**get_api_key())
+
+    resposta = bard.get_answer("Qual a resposta para a vida, o universo e tudo mais?")
+
+    print(resposta['content'])
+
+
+if __name__ == "__main__":
+    main()
