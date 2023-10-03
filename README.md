@@ -1,9 +1,21 @@
 # Primeiro_projeto
 
 A ideia do projeto consiste em fazer buscas de certas perguntas no site investidor 10.
-São elas: 
 
-ROE	ROE historicamente maior que 5%? (Considere anos anteriores).
+# A resolver
+1) Como manter as empresas no csv e só atualizar os valores
+2) Criar mais métricas para o questions
+3) Como rodar uma IA para otimizar as questions
+4) Como capturar de uma só vez todas as empresas do investidor 10
+
+
+# Resolvido
+1) Criar CSV
+2) Como conectar o bard (feito porém não funciona no formato que precisa)
+
+As perguntas são: 
+
+## ROE historicamente maior que 5%? 
 	
 ## DÍVIDA LÍQUIDA - LUCRO LÍQUIDO	
 
@@ -62,6 +74,3 @@ O Preço/Lucro da empresa está abaixo de 30?
 A empresa teve lucro operacional no ?ltimo exerc?cio?	
 
 ---------------------------
-# A resolver
-1) Como manter as empresas no csv e só atualizar os valores 
-2) Como conectar o bard

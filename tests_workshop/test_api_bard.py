@@ -7,8 +7,13 @@ import os
 def get_api_key() -> dict:
     load_dotenv()
 
+    api_key = os.environ.get("BARD_API_KEY")
+
+    if api_key is None:
+        raise Exception("API key not found")
+
     return {
-        "token": os.environ.get("BARD_API_KEY")
+        "token": api_key
     }
 
 
