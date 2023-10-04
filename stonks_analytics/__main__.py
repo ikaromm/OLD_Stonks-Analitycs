@@ -18,24 +18,8 @@ import time
 import re
 import os
 
-
-# def set_chrome_options() -> Options:
-#     """Sets chrome options for Selenium.
-#     Chrome options for headless browser is enabled.
-#     """
-#     chrome_options = webdriver.ChromeOptions()
-
-#     chrome_options.add_argument('--no-sandbox')
-#     chrome_options.add_argument('--headless')
-#     chrome_options.add_argument('--disable-gpu')
-#     chrome_options.add_argument('--disable-dev-shm-usage')
-#     chrome_options.add_argument("--window-size=1920,1080")
-
-#     return chrome_options
-# options=set_chrome_options()
-
-
 def main():
+    
     data = DataHandler()
     data.load_data()
 
@@ -44,7 +28,7 @@ def main():
 
     empresa = input("Digite o codigo da empresa: ")
 
-    browser = webdriver.Chrome()
+    browser = webdriver.Chrome(options=set_chrome_options())
     wait = WebDriverWait(browser, 10)
     browser.get("https://investidor10.com.br")
 
@@ -154,6 +138,14 @@ def main():
     xpath_fundation = '//*[@id="data_about"]/div[2]/div/div[1]/table/tbody/tr[5]/td[2]'
     fundation = extract_date_from_xpath(xpath_fundation, browser)
 
+    xpath_VPA = '//*[@id="table-indicators"]/div[17]/div[1]/span'
+    VPA = extract_numeric_from_xpath(xpath_VPA, browser)
+
+    xpath_LPA = '//*[@id="table-indicators"]/div[18]/div[1]/span'
+    LPA = extract_numeric_from_xpath(xpath_LPA, browser)
+
+
+
     browser.quit()
 
     current_date = datetime.datetime.now()
@@ -197,18 +189,19 @@ def main():
             "Dy": dy,
             "P/VP": pvp,
             "P/L": pl,
+            "VPA": VPA,
+            "LPA": LPA,
         }
     )
 
-    div_liq_men_luc_liq = int(
-        1 if float(net_revenue) - float(divida_liquida) > 0 else 0
-    )
+    div_liq_men_luc_liq = int(1 if float(net_revenue) - float(divida_liquida) > 0 else 0)
     divdends = 1 if float(dy) > 0 else 0
     pvp_less_5 = 1 if float(pvp) < 5 else 0
     liq_ebta = 1 if (float(divida_liquida) / float(ebita)) < 2 else 0
     pl_less_30 = 1 if float(pl) < 30 else 0
     more_than_30y = 1 if float(existence_time) > 30 else 0
     luc_op = 1 if float(ebit) > 0 else 0
+    graham_formula = float((22.5 * float(VPA) * float(LPA) )**(1/2))
 
     # Calculate the sum of the variables
     sum_of_variables = (
@@ -234,7 +227,9 @@ def main():
             "P/L < 30": pl_less_30,
             "+30 anos de mercado? (Fundação)": more_than_30y,
             "LUCRO OPERACIONAL>0": luc_op,
+            "Formula Graham": round(graham_formula,2),
             "Soma_total": sum_of_variables,
+            
         }
     )
 
@@ -242,10 +237,13 @@ def main():
     question.save_data()
 
     num_columns = len(question.columns) - 2
-
+   
     print(data.loaded_data)
     print(question.loaded_data)
     print(f"A soma das perguntas é {soma_tot} e o maximo = {num_columns}")
+    print(f'Cotação: {price}')
+    print(f'O valor pela formula graham (sqrt(22.5*VPA*LPA)) é {round(float(graham_formula),2)}')
+    print(f'Preço ação - formula graham: {round(price - float(graham_formula),2)}')
 
 
 if __name__ == "__main__":

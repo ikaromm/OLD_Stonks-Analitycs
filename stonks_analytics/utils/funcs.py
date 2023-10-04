@@ -58,7 +58,7 @@ def extract_date_from_xpath(xpath: str, browser: webdriver.Chrome) -> str:
 
 
 def extract_numeric_from_xpath(xpath: str, browser: webdriver.Chrome) -> str:
-    value = browser.find_element("xpath", xpath).text.replace(",", ".")
+    value = browser.find_element("xpath", xpath).text.replace(".", "").replace(",", ".")
 
     scale = None
     if "Bilhões" in value:
@@ -80,3 +80,21 @@ def extract_numeric_from_xpath(xpath: str, browser: webdriver.Chrome) -> str:
         return float(re.sub("[^\\d.-]", "", value)) * scale
 
     return float(re.sub("[^\\d.-]", "", value))
+
+def set_chrome_options():
+    """Sets chrome options for Selenium.
+    Chrome options for headless browser is enabled.
+    """
+    chrome_options = webdriver.ChromeOptions()
+
+    chrome_options.add_argument('--no-sandbox')
+    chrome_options.add_argument('--headless')
+    chrome_options.add_argument("--window-size=1920,1080")
+    chrome_options.add_argument('--disable-gpu')
+    chrome_options.add_argument('--disable-extensions')
+    chrome_options.add_argument('--disable-popup-blocking')
+    chrome_options.add_argument('--disable-notifications')
+    chrome_options.add_argument('--disable-dev-shm-usage')
+
+
+    return chrome_options

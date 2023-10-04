@@ -24,6 +24,8 @@ class DataHandler(PandasHandler):
         "Dy",
         "P/VP",
         "P/L",
+        "VPA",
+        "LPA"
     ]
 
     def __init__(self, file_path="csv/data.csv"):
