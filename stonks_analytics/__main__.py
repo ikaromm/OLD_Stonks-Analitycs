@@ -37,7 +37,7 @@ def main():
 
    
 
-    for item in tickers[190:]:
+    for item in tickers[400:]:
         empresa = item
 
         data = DataHandler()
@@ -60,14 +60,19 @@ def main():
         wait.until(EC.visibility_of(search_bar))
         search_bar.send_keys(empresa)
         search_bar.submit()
+        try:
+            first_result = browser.find_element(
+                "xpath", '//*[@id="results"]/div/div[2]/div[1]/div/div/a/div/div[1]/img'
+            )
+            wait.until(EC.visibility_of(first_result))
+            first_result.click()
 
-        first_result = browser.find_element(
-            "xpath", '//*[@id="results"]/div/div[2]/div[1]/div/div/a/div/div[1]/img'
-        )
-        wait.until(EC.visibility_of(first_result))
-        first_result.click()
+            time.sleep(1)
 
-        time.sleep(1)
+        except:
+            print("Nenhum resultado encontrado")
+            browser.quit()
+            continue
 
         xpath_company_name = '//*[@id="header_action"]/div[1]/div[2]/h2'
         pl_element = WebDriverWait(browser, 10).until(
@@ -165,7 +170,7 @@ def main():
         xpath_LPA = '//*[@id="table-indicators"]/div[18]/div[1]/span'
         LPA = extract_numeric_from_xpath(xpath_LPA, browser)
 
-
+        
 
         browser.quit()
 
