@@ -53,8 +53,11 @@ def extract_cnpj_from_xpath(xpath: str, browser: webdriver.Chrome) -> str:
 
 
 def extract_date_from_xpath(xpath: str, browser: webdriver.Chrome) -> str:
-    date = browser.find_element("xpath", xpath).text.replace("/", "")
-    return int(re.sub("[^\\d]", "", date))
+    try:
+        date = browser.find_element("xpath", xpath).text.replace("/", "")
+        return int(re.sub("[^\\d]", "", date))
+    except:
+        return 0
 
 
 def extract_numeric_from_xpath(xpath: str, browser: webdriver.Chrome) -> str:
@@ -95,6 +98,7 @@ def set_chrome_options():
     chrome_options.add_argument('--disable-popup-blocking')
     chrome_options.add_argument('--disable-notifications')
     chrome_options.add_argument('--disable-dev-shm-usage')
+    chrome_options.add_argument('--disable-blink-features=AutomationControlled')
 
 
     return chrome_options
