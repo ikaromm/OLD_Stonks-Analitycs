@@ -13,7 +13,8 @@ class QuestionHandler(PandasHandler):
         "P/L < 30",
         "Crescimento de receitas lucro >5perc ultimos 5 anos",
         "Soma_total",
-        "Formula Graham"
+        "Formula Graham",
+        "Cotação"
     ]
 
     def __init__(self, file_path="csv/question.csv"):

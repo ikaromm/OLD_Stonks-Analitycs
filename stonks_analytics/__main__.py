@@ -254,6 +254,7 @@ def main():
                 "+30 anos de mercado? (Fundação)": more_than_30y,
                 "LUCRO OPERACIONAL>0": luc_op,
                 "Formula Graham": round(graham_formula,2),
+                "Cotação": price,
                 "Soma_total": sum_of_variables,
                 
             }
