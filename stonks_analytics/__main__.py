@@ -37,7 +37,7 @@ def main():
 
    
 
-    for item in tickers[400:]:
+    for item in tickers:
         empresa = item
 
         data = DataHandler()
@@ -60,7 +60,9 @@ def main():
         wait.until(EC.visibility_of(search_bar))
         search_bar.send_keys(empresa)
         search_bar.submit()
+
         try:
+
             first_result = browser.find_element(
                 "xpath", '//*[@id="results"]/div/div[2]/div[1]/div/div/a/div/div[1]/img'
             )
@@ -86,7 +88,7 @@ def main():
             EC.visibility_of_element_located((By.XPATH, xpathprice))
         )
         price = extract_numeric_from_xpath(xpathprice, browser)
-
+        price1 = extract_numeric_from_xpath(xpathprice, browser)
         # Receita Liquida
         xpath_receita_liquida = '//*[@id="table-balance-results"]/tbody/tr[2]/td[2]/div[1]'
         pl_element = WebDriverWait(browser, 10).until(
@@ -142,6 +144,10 @@ def main():
         xpath_roe = '//*[@id="table-balance-results"]/tbody/tr[14]/td[2]'
         roe = extract_numeric_from_xpath(xpath_roe, browser)
 
+        # ROA
+        xpath_roa = '//*[@id="table-indicators"]/div[22]/div[1]/span'
+        roa = extract_numeric_from_xpath(xpath_roa, browser)
+
         # roic
         xpath_roic = '//*[@id="table-balance-results"]/tbody/tr[15]/td[2]'
         roic = extract_numeric_from_xpath(xpath_roic, browser)
@@ -170,7 +176,15 @@ def main():
         xpath_LPA = '//*[@id="table-indicators"]/div[18]/div[1]/span'
         LPA = extract_numeric_from_xpath(xpath_LPA, browser)
 
-        
+        try:
+            xpath_tag_along = '//*[@id="table-indicators-company"]/div[12]/span[2]'
+            tag_along = extract_numeric_from_xpath(xpath_tag_along, browser)
+
+            xpath_freefloat = '//*[@id="table-indicators-company"]/div[11]/span[2]'
+            free_float = extract_numeric_from_xpath(xpath_freefloat, browser)
+        except:
+            tag_along = 0
+            free_float = 0 
 
         browser.quit()
 
@@ -197,20 +211,20 @@ def main():
             {
                 "Empresa": company_name,
                 "Cotação": price,
-                "Divida Liquida": divida_liquida,
+                "Divida_Liquida": divida_liquida,
                 "Custos": cost,
-                "Lucro Bruto": gross_profit,
-                "Margem Bruta": gross_margin,
-                "Margem Ebita": ebit_margin,
-                "Margem Liquida": net_margin,
-                "Divida Bruta": gross_debt,
+                "Lucro_Bruto": gross_profit,
+                "Margem_Bruta": gross_margin,
+                "Margem_Ebita": ebit_margin,
+                "Margem_Liquida": net_margin,
+                "Divida_Bruta": gross_debt,
                 "ROE": roe,
-                "Receita Liquida": receita_liquida,
+                "Receita_Liquida": receita_liquida,
                 "EBITA": ebita,
                 "EBIT": ebit,
                 "Impostos": tax,
-                "Margem EBITA": ebit_margin,
-                "Lucro Liquido": net_revenue,
+                "Margem_EBITA": ebit_margin,
+                "Lucro_Liquido": net_revenue,
                 "Roic": roic,
                 "Dy": dy,
                 "P/VP": pvp,
@@ -221,13 +235,18 @@ def main():
         )
 
         div_liq_men_luc_liq = int(1 if float(net_revenue) - float(divida_liquida) > 0 else 0)
-        divdends = 1 if float(dy) > 0 else 0
+        divdends = 1 if float(dy) > 3 else 0
         pvp_less_5 = 1 if float(pvp) < 5 else 0
         liq_ebta = 1 if (float(divida_liquida) / float(ebita)) < 2 else 0
-        pl_less_30 = 1 if float(pl) < 30 else 0
-        more_than_30y = 1 if float(existence_time) > 30 else 0
+        pl_less_10 = 1 if float(pl) < 15 else 0
+        more_than_10y = 1 if float(existence_time) > 30 else 0
         luc_op = 1 if float(ebit) > 0 else 0
         graham_formula = float((22.5 * float(VPA) * float(LPA) )**(1/2)) if float(VPA)>0 and float(LPA)>0 else 0
+        roe_calc = 1 if float(roe)> 15 else 0
+        roa_calc = 1 if float(roa) > 10 else 0
+        roic_calc = 1 if  float(roic)> 12 else 0
+        tag_along_calc = 1 if float(tag_along) > 90 else 0
+        free_float_calc = 1 if float(free_float) >= 50 else 0
 
         # Calculate the sum of the variables
         sum_of_variables = (
@@ -235,9 +254,14 @@ def main():
             + divdends
             + pvp_less_5
             + liq_ebta
-            + pl_less_30
-            + more_than_30y
+            + pl_less_10
+            + more_than_10y
             + luc_op
+            + roe_calc
+            + roa_calc
+            + roic_calc
+            + tag_along_calc
+            + free_float_calc
         )
 
         soma_tot = int(sum_of_variables)
@@ -245,30 +269,33 @@ def main():
         # Assuming 'question' is a DataFrame, you can assign the values to it
         question.append(
             {
-                "Company Name": company_name,
-                "DÍVIDA LÍQUIDA - LUCRO LÍQUIDO": div_liq_men_luc_liq,
-                "DIVIDENDOS": divdends,
-                "P/VP abaixo de 5": pvp_less_5,
-                "Líquida/EBITDA é menor que 2": liq_ebta,
-                "P/L < 30": pl_less_30,
-                "+30 anos de mercado? (Fundação)": more_than_30y,
-                "LUCRO OPERACIONAL>0": luc_op,
-                "Formula Graham": round(graham_formula,2),
-                "Cotação": price,
+                "Empresa": company_name,
+                "Div.Liq_menos_Luc.Liq": div_liq_men_luc_liq,
+                "Dividendos": divdends,
+                "PVP_menor5": pvp_less_5,
+                "Liq_sobre_Ebita_menor2": liq_ebta,
+                "PL_menor15": pl_less_10,
+                "Ano_mercado_maior10": more_than_10y,
+                "Luc.Operacional": luc_op,
+                "Roe_maior15": roe_calc,
+                "Roa_maior10": roa_calc,
+                "Roic_maior12": roic_calc,
+                "Free_float50": free_float_calc,
+                "Tag_along100": tag_along_calc,
                 "Soma_total": sum_of_variables,
-                
+                "Formula_Graham": round(graham_formula,2),
+                "Cotacao": round(float(price1),2),
             }
         )
 
         data.save_data()
         question.save_data()
 
-        num_columns = len(question.columns) - 2
+        num_columns = len(question.columns) - 4
     
         print(data.loaded_data)
         print(question.loaded_data)
         print(f"A soma das perguntas é {soma_tot} e o maximo = {num_columns}")
-        print(f'Cotação: {price}')
         print(f'O valor pela formula graham (sqrt(22.5*VPA*LPA)) é {round(float(graham_formula),2)}')
         print(f'Preço ação - formula graham: {round(price - float(graham_formula),2)}')
         
