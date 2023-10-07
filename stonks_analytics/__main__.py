@@ -1,4 +1,4 @@
-from stonks_analytics.data_handler import DataHandler, QuestionHandler
+from stonks_analytics.data_handler import DataHandler, QuestionHandler, DataSqlHandler
 from stonks_analytics.utils.funcs import *
 from stonks_analytics.utils.config import *
 
@@ -17,6 +17,13 @@ import datetime
 import time
 import re
 import os
+import random
+
+def uniqueid():
+    seed = random.getrandbits(32)
+    while True:
+       yield seed
+       seed += 1
 
 def main():
 
@@ -35,9 +42,10 @@ def main():
         tickers.append(acao)    
     ###### storage all tickers
 
-   
+    
 
-    for item in tickers:
+    for item in tickers[120:]:
+        unique_sequence = uniqueid()
         empresa = item
 
         data = DataHandler()
@@ -45,6 +53,9 @@ def main():
 
         question = QuestionHandler()
         question.load_data()
+
+        dadosql = DataSqlHandler()
+        dadosql.load_data()
 
         #empresa = input("Digite o codigo da empresa: ")
 
@@ -176,6 +187,16 @@ def main():
         xpath_LPA = '//*[@id="table-indicators"]/div[18]/div[1]/span'
         LPA = extract_numeric_from_xpath(xpath_LPA, browser)
 
+        try: 
+            xpath_setor = '//*[@id="table-indicators-company"]/div[14]/a/span[2]'
+            setor = extract_string_from_xpath(xpath_setor, browser)
+
+            xpath_segmento = '//*[@id="table-indicators-company"]/div[15]/a/span[2]'
+            segmento = extract_string_from_xpath(xpath_segmento, browser)
+        except:
+            setor = "Não encontrado"    
+            segmento = "Não encontrado" 
+
         try:
             xpath_tag_along = '//*[@id="table-indicators-company"]/div[12]/span[2]'
             tag_along = extract_numeric_from_xpath(xpath_tag_along, browser)
@@ -288,13 +309,33 @@ def main():
             }
         )
 
+        
+
+        dadosql.append(
+            {
+                "ID": next(unique_sequence),
+                "Codigo": empresa,
+                "Empresa": company_name,
+                "Setor": setor ,
+                "Segmento": segmento,
+                "PVP": round(float(pvp), 2),
+                "Tag_Along": tag_along,
+                "Free_Float": free_float,
+                "Graham": round(float(graham_formula), 2),
+                "Cotacao": price,
+                "Soma_Total": soma_tot,
+            }
+        )
+
         data.save_data()
         question.save_data()
+        dadosql.save_data()
 
         num_columns = len(question.columns) - 4
     
         print(data.loaded_data)
         print(question.loaded_data)
+        print(dadosql.loaded_data)
         print(f"A soma das perguntas é {soma_tot} e o maximo = {num_columns}")
         print(f'O valor pela formula graham (sqrt(22.5*VPA*LPA)) é {round(float(graham_formula),2)}')
         print(f'Preço ação - formula graham: {round(price - float(graham_formula),2)}')
