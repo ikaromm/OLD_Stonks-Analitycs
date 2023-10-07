@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import pandas as pd
+import random
 
 # from bardapi import Bard
 from dotenv import load_dotenv
@@ -102,3 +103,9 @@ def set_chrome_options():
 
 
     return chrome_options
+
+def uniqueid():
+    seed = random.getrandbits(32)
+    while True:
+       yield seed
+       seed += 1
