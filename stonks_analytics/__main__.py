@@ -22,8 +22,10 @@ import random
 
 def main():
 
+   
     #### Read all tickers
-    tabela = pd.read_csv("acoeslista.csv", sep=",", encoding="utf-8")
+    tabela = pd.read_csv("acoeslista.csv", sep=",", encoding="utf-8") ##ação
+
 
     tickers = []
 
