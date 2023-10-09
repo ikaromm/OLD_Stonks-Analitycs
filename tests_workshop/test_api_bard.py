@@ -12,9 +12,7 @@ def get_api_key() -> dict:
     if api_key is None:
         raise Exception("API key not found")
 
-    return {
-        "token": api_key
-    }
+    return {"token": api_key}
 
 
 def main():
@@ -22,7 +20,7 @@ def main():
 
     resposta = bard.get_answer("Qual a resposta para a vida, o universo e tudo mais?")
 
-    print(resposta['content'])
+    print(resposta["content"])
 
 
 if __name__ == "__main__":

@@ -6,10 +6,10 @@ from datetime import datetime
 
 
 class Estatisticas(Base):
-    __tablename__ = 'estatisticas'
+    __tablename__ = "estatisticas"
 
     id = Column(Integer, primary_key=True)
-    empresa_id = Column(Integer, ForeignKey('empresa.id'), nullable=False)
+    empresa_id = Column(Integer, ForeignKey("empresa.id"), nullable=False)
 
     setor = Column(String(50), nullable=False)
     segmento = Column(String(50), nullable=False)

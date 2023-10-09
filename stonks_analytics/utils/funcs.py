@@ -37,6 +37,7 @@ def sum_of_variables() -> int:
         + luc_op
     )
 
+
 def bard_answer(answer: str) -> int:
     if answer == "não":
         return 0
@@ -85,27 +86,28 @@ def extract_numeric_from_xpath(xpath: str, browser: webdriver.Chrome) -> str:
 
     return float(re.sub("[^\\d.-]", "", value))
 
+
 def set_chrome_options():
     """Sets chrome options for Selenium.
     Chrome options for headless browser is enabled.
     """
     chrome_options = webdriver.ChromeOptions()
 
-    chrome_options.add_argument('--no-sandbox')
-    chrome_options.add_argument('--headless')
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--headless")
     chrome_options.add_argument("--window-size=1920,1080")
-    chrome_options.add_argument('--disable-gpu')
-    chrome_options.add_argument('--disable-extensions')
-    chrome_options.add_argument('--disable-popup-blocking')
-    chrome_options.add_argument('--disable-notifications')
-    chrome_options.add_argument('--disable-dev-shm-usage')
-    chrome_options.add_argument('--disable-blink-features=AutomationControlled')
-
+    chrome_options.add_argument("--disable-gpu")
+    chrome_options.add_argument("--disable-extensions")
+    chrome_options.add_argument("--disable-popup-blocking")
+    chrome_options.add_argument("--disable-notifications")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("--disable-blink-features=AutomationControlled")
 
     return chrome_options
+
 
 def uniqueid():
     seed = random.getrandbits(32)
     while True:
-       yield seed
-       seed += 1
+        yield seed
+        seed += 1

@@ -20,25 +20,22 @@ import os
 import random
 
 
-
 def main():
 
     #### Read all tickers
-    tabela = pd.read_csv('acoeslista.csv', sep=",", encoding="utf-8")
+    tabela = pd.read_csv("acoeslista.csv", sep=",", encoding="utf-8")
 
     tickers = []
 
-    for acao in tabela['Código']:
-    
+    for acao in tabela["Código"]:
+
         if acao.endswith("4"):
-            
-            if any(item.endswith("3") for item in tabela['Código']):
+
+            if any(item.endswith("3") for item in tabela["Código"]):
                 continue
 
-        tickers.append(acao)    
+        tickers.append(acao)
     ###### storage all tickers
-
-    
 
     for item in tickers[120:]:
         unique_sequence = uniqueid()
@@ -53,11 +50,11 @@ def main():
         dadosql = DataSqlHandler()
         dadosql.load_data()
 
-        #empresa = input("Digite o codigo da empresa: ")
+        # empresa = input("Digite o codigo da empresa: ")
 
         browser = webdriver.Chrome(options=set_chrome_options())
         wait = WebDriverWait(browser, 10)
-        
+
         browser.get("https://investidor10.com.br")
 
         search_bar = browser.find_element(
@@ -97,7 +94,9 @@ def main():
         price = extract_numeric_from_xpath(xpathprice, browser)
         price1 = extract_numeric_from_xpath(xpathprice, browser)
         # Receita Liquida
-        xpath_receita_liquida = '//*[@id="table-balance-results"]/tbody/tr[2]/td[2]/div[1]'
+        xpath_receita_liquida = (
+            '//*[@id="table-balance-results"]/tbody/tr[2]/td[2]/div[1]'
+        )
         pl_element = WebDriverWait(browser, 10).until(
             EC.visibility_of_element_located((By.XPATH, xpath_receita_liquida))
         )
@@ -120,7 +119,9 @@ def main():
         gross_debt = extract_numeric_from_xpath(xpath_gross_debt, browser)
 
         # Divida Liquida
-        xpath_divida_liquida = '//*[@id="table-balance-results"]/tbody/tr[10]/td[2]/div[1]'
+        xpath_divida_liquida = (
+            '//*[@id="table-balance-results"]/tbody/tr[10]/td[2]/div[1]'
+        )
         divida_liquida = extract_numeric_from_xpath(xpath_divida_liquida, browser)
 
         # Lucro liquido
@@ -174,7 +175,9 @@ def main():
         xpath_cnpj = '//*[@id="data_about"]/div[2]/div/div[1]/table/tbody/tr[2]/td[2]'
         cnpj = float(extract_cnpj_from_xpath(xpath_cnpj, browser))
 
-        xpath_fundation = '//*[@id="data_about"]/div[2]/div/div[1]/table/tbody/tr[5]/td[2]'
+        xpath_fundation = (
+            '//*[@id="data_about"]/div[2]/div/div[1]/table/tbody/tr[5]/td[2]'
+        )
         fundation = extract_date_from_xpath(xpath_fundation, browser)
 
         xpath_VPA = '//*[@id="table-indicators"]/div[17]/div[1]/span'
@@ -183,15 +186,15 @@ def main():
         xpath_LPA = '//*[@id="table-indicators"]/div[18]/div[1]/span'
         LPA = extract_numeric_from_xpath(xpath_LPA, browser)
 
-        try: 
+        try:
             xpath_setor = '//*[@id="table-indicators-company"]/div[14]/a/span[2]'
             setor = extract_string_from_xpath(xpath_setor, browser)
 
             xpath_segmento = '//*[@id="table-indicators-company"]/div[15]/a/span[2]'
             segmento = extract_string_from_xpath(xpath_segmento, browser)
         except:
-            setor = "Não encontrado"    
-            segmento = "Não encontrado" 
+            setor = "Não encontrado"
+            segmento = "Não encontrado"
 
         try:
             xpath_tag_along = '//*[@id="table-indicators-company"]/div[12]/span[2]'
@@ -201,7 +204,7 @@ def main():
             free_float = extract_numeric_from_xpath(xpath_freefloat, browser)
         except:
             tag_along = 0
-            free_float = 0 
+            free_float = 0
 
         browser.quit()
 
@@ -209,7 +212,7 @@ def main():
         current_year = current_date.year
         existence_time = current_year - int(fundation)
 
-    # try:
+        # try:
         #     bard = Bard(**get_api_key())
 
         #     # resposta = str(bard.get_answer(f" Responda APENAS com sim ou não. A empresa {company_name} teve crescimento de receitas lucro >5perc ultimos 5 anos"))
@@ -251,17 +254,23 @@ def main():
             }
         )
 
-        div_liq_men_luc_liq = int(1 if float(net_revenue) - float(divida_liquida) > 0 else 0)
+        div_liq_men_luc_liq = int(
+            1 if float(net_revenue) - float(divida_liquida) > 0 else 0
+        )
         divdends = 1 if float(dy) > 3 else 0
         pvp_less_5 = 1 if float(pvp) < 5 else 0
         liq_ebta = 1 if (float(divida_liquida) / float(ebita)) < 2 else 0
         pl_less_10 = 1 if float(pl) < 15 else 0
         more_than_10y = 1 if float(existence_time) > 30 else 0
         luc_op = 1 if float(ebit) > 0 else 0
-        graham_formula = float((22.5 * float(VPA) * float(LPA) )**(1/2)) if float(VPA)>0 and float(LPA)>0 else 0
-        roe_calc = 1 if float(roe)> 15 else 0
+        graham_formula = (
+            float((22.5 * float(VPA) * float(LPA)) ** (1 / 2))
+            if float(VPA) > 0 and float(LPA) > 0
+            else 0
+        )
+        roe_calc = 1 if float(roe) > 15 else 0
         roa_calc = 1 if float(roa) > 10 else 0
-        roic_calc = 1 if  float(roic)> 12 else 0
+        roic_calc = 1 if float(roic) > 12 else 0
         tag_along_calc = 1 if float(tag_along) > 90 else 0
         free_float_calc = 1 if float(free_float) >= 50 else 0
 
@@ -300,19 +309,17 @@ def main():
                 "Free_float50": free_float_calc,
                 "Tag_along100": tag_along_calc,
                 "Soma_total": sum_of_variables,
-                "Formula_Graham": round(graham_formula,2),
-                "Cotacao": round(float(price1),2),
+                "Formula_Graham": round(graham_formula, 2),
+                "Cotacao": round(float(price1), 2),
             }
         )
-
-        
 
         dadosql.append(
             {
                 "ID": next(unique_sequence),
                 "Codigo": empresa,
                 "Empresa": company_name,
-                "Setor": setor ,
+                "Setor": setor,
                 "Segmento": segmento,
                 "PVP": round(float(pvp), 2),
                 "Tag_Along": tag_along,
@@ -328,15 +335,16 @@ def main():
         dadosql.save_data()
 
         num_columns = len(question.columns) - 4
-    
+
         print(data.loaded_data)
         print(question.loaded_data)
         print(dadosql.loaded_data)
         print(f"A soma das perguntas é {soma_tot} e o maximo = {num_columns}")
-        print(f'O valor pela formula graham (sqrt(22.5*VPA*LPA)) é {round(float(graham_formula),2)}')
-        print(f'Preço ação - formula graham: {round(price - float(graham_formula),2)}')
-        
+        print(
+            f"O valor pela formula graham (sqrt(22.5*VPA*LPA)) é {round(float(graham_formula),2)}"
+        )
+        print(f"Preço ação - formula graham: {round(price - float(graham_formula),2)}")
+
+
 if __name__ == "__main__":
     main()
-
-

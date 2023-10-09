@@ -47,12 +47,12 @@ class TestEstatisticasRepositorio(TestCase):
 
     def test_get_all(self):
 
-        estatisticas = []       
+        estatisticas = []
         for i in range(10):
             empresa = Empresa(codigo=f"TESTE{i}", nome=f"Teste{i}")
             self.empresa_repositorio = EmpresaRepositorio(self.engine)
-            self.empresa_repositorio.add(empresa)   
-       
+            self.empresa_repositorio.add(empresa)
+
             estatistica = Estatisticas(
                 empresa_id=empresa.id,
                 setor=f"Teste{i}",
@@ -67,7 +67,6 @@ class TestEstatisticasRepositorio(TestCase):
 
             estatisticas.append(estatistica)
 
-
         estatistica_repositorio = EstatisticasRepositorio(self.engine)
 
         estatistica_repositorio.add_all(estatisticas)
@@ -77,29 +76,26 @@ class TestEstatisticasRepositorio(TestCase):
         self.assertEqual(len(estatisticas), len(estatisticas_salvas))
 
     def test_update(self):
-       estatistica = Estatisticas(**self.dados)
+        estatistica = Estatisticas(**self.dados)
 
-       estatistica_repositorio = EstatisticasRepositorio(self.engine)
+        estatistica_repositorio = EstatisticasRepositorio(self.engine)
 
-       estatistica_repositorio.add(estatistica)
+        estatistica_repositorio.add(estatistica)
 
-       estatistica.graham = 2 
-       estatistica.setor = "Teste 2"
-       estatistica_repositorio.update(estatistica)
+        estatistica.graham = 2
+        estatistica.setor = "Teste 2"
+        estatistica_repositorio.update(estatistica)
 
-       estatistica_salva = estatistica_repositorio.get(estatistica.id)
+        estatistica_salva = estatistica_repositorio.get(estatistica.id)
 
-       self.assertEqual(estatistica.graham, estatistica_salva.graham)
-       
+        self.assertEqual(estatistica.graham, estatistica_salva.graham)
 
     def test_remove(self):
-       estatistica_repositorio = EstatisticasRepositorio(self.engine)
-       estatistica = Estatisticas(**self.dados)
-       estatistica_repositorio.add(estatistica)
-       estatistica_repositorio.remove(estatistica)
+        estatistica_repositorio = EstatisticasRepositorio(self.engine)
+        estatistica = Estatisticas(**self.dados)
+        estatistica_repositorio.add(estatistica)
+        estatistica_repositorio.remove(estatistica)
 
-       estatistica_salva = estatistica_repositorio.get(estatistica.id)
+        estatistica_salva = estatistica_repositorio.get(estatistica.id)
 
-       self.assertIsNone(estatistica_salva)
-       
-      
+        self.assertIsNone(estatistica_salva)
