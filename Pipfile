@@ -9,6 +9,7 @@ selenium = "*"
 python-dotenv = "*"
 numpy = "*"
 bardapi = "*"
+sqlalchemy = "*"
 
 [dev-packages]
 black = "*"
