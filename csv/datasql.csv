@@ -1,12 +1,12 @@
 ID;Codigo;Empresa;Setor;Segmento;PVP;Tag_Along;Free_Float;Graham;Cotacao;Soma_Total
-259875270;MGLU3;MAGAZINE LUIZA;Consumo Cíclico;Eletrodomésticos;1.17;100.0;42.59;0.0;1.74;5
-3987646114;HAPV3;HAPVIDA;Saúde;Serviços Médicos, Hospitalares, Análises e Diagnósticos;0.62;100.0;59.1;0.0;4.03;5
-3440162213;B3SA3;B3 S.A. - BRASIL, BOLSA, BALCÃO;Financeiro;Serviços Financeiros Diversos;3.32;100.0;98.53;7.56;11.81;8
-628169639;CVCB3;CVC BRASIL;Consumo Cíclico;Viagens e Turismo;2.15;100.0;62.17;0.0;2.57;6
-3769877342;CIEL3;CIELO;Financeiro;Serviços Financeiros Diversos;0.81;100.0;40.32;8.24;3.47;8
-3673650695;LREN3;LOJAS RENNER;Consumo Cíclico;Tecidos . Vestuário e Calçados;1.24;100.0;98.7;15.43;12.52;9
-1661680578;COGN3;COGNA ON;Consumo Cíclico;Serviços Educacionais;0.38;100.0;96.75;0.0;2.48;5
-926086238;MRVE3;MRV ENGENHARIA E PARTICIPAÇÕES;Consumo Cíclico;Incorporações;0.83;100.0;54.33;0.0;8.92;6
+1243569932;MGLU3;MAGAZINE LUIZA;Consumo Cíclico;Eletrodomésticos;1.16;100.0;42.59;0.0;1.72;5
+3999771152;HAPV3;HAPVIDA;Saúde;Serviços Médicos, Hospitalares, Análises e Diagnósticos;0.61;100.0;59.1;0.0;3.99;5
+3279912896;B3SA3;B3 S.A. - BRASIL, BOLSA, BALCÃO;Financeiro;Serviços Financeiros Diversos;3.29;100.0;98.53;7.56;11.61;8
+3928983120;CVCB3;CVC BRASIL;Consumo Cíclico;Viagens e Turismo;2.15;100.0;62.17;0.0;2.57;6
+3313148029;CIEL3;CIELO;Financeiro;Serviços Financeiros Diversos;0.79;100.0;40.32;8.24;3.41;8
+443792544;LREN3;LOJAS RENNER;Consumo Cíclico;Tecidos . Vestuário e Calçados;1.21;100.0;98.7;15.43;12.21;9
+3966844264;COGN3;COGNA ON;Consumo Cíclico;Serviços Educacionais;0.38;100.0;96.75;0.0;2.44;5
+734373915;MRVE3;MRV ENGENHARIA E PARTICIPAÇÕES;Consumo Cíclico;Incorporações;0.83;100.0;54.33;0.0;8.87;6
 1934476053;CPLE5;COPEL;Utilidade Pública;Energia Elétrica;2.76;100.0;63.24;10.33;20.11;6
 1559917574;RAIL3;RUMO S.A;Bens Industriais;Transporte Ferroviário;2.62;100.0;65.56;8.97;21.83;4
 734106650;ABEV3;AMBEV;Consumo não Cíclico;Cervejas e Refrigerantes;2.44;0.8;27.89;10.51;13.19;8
@@ -206,7 +206,7 @@ ID;Codigo;Empresa;Setor;Segmento;PVP;Tag_Along;Free_Float;Graham;Cotacao;Soma_To
 14657129;IGTI3;GRUPO JEREISSATI;Financeiro;Exploração de Imóveis;0.77;0.0;55.61;4.16;2.58;7
 3923980237;BRAP3;BRADESPAR;Financeiro;Holdings Diversificadas;1.06;80.0;71.57;55.17;20.38;9
 411341961;PDTC3;PADTEC HOLDING S.A.;Financeiro;Serviços Financeiros Diversos;1.45;0.0;44.69;3.11;2.49;4
-3379572459;CTSA8;SANTANENSE;Não encontrado;Não encontrado;0.0;0.0;132.85;3.3;0.0;5
+350871268;CTSA8;SANTANENSE;Não encontrado;Não encontrado;0.0;0.0;132.85;3.3;0.0;5
 4191530714;LAND3;TERRA SANTA PROPRIEDADES AGRICOLAS S.A.;Consumo não Cíclico;Agricultura;2.91;100.0;31.81;15.84;21.22;8
 2044301042;SNSY3;SANSUY S.A. INDUSTRIA DE PLÁSTICOS;Materiais Básicos;Materiais Diversos;-0.02;0.0;100.0;0.0;5.85;5
 1427046114;TPIS3;TPI - TRIUNFO PARTICIP. E INVEST. S.A;Bens Industriais;Exploração de Rodovias;0.23;100.0;42.13;0.0;4.05;5
@@ -214,7 +214,7 @@ ID;Codigo;Empresa;Setor;Segmento;PVP;Tag_Along;Free_Float;Graham;Cotacao;Soma_To
 2303885001;VSTE3;VESTE S/A;Consumo Cíclico;Tecidos . Vestuário e Calçados;1.56;100.0;96.74;17.48;14.17;8
 2322935523;DMVF3;D1000 VAREJO FARMA PARTICIPAÇÕES S.A.;Saúde;Medicamentos e Outros Produtos;0.29;100.0;37.62;9.75;4.86;5
 3222434015;PMAM3;PARANAPANEMA;Materiais Básicos;Artefatos de Cobre;-0.06;100.0;100.0;0.0;4.68;7
-2103122302;COCE6;COELCE;Não encontrado;Não encontrado;0.26;0.0;25.95;85.46;13.8;5
+928328099;COCE6;COELCE;Não encontrado;Não encontrado;0.26;0.0;25.95;85.46;13.8;5
 566644379;TASA3;TAURUS ARMAS;Bens Industriais;Armas e Munições;1.8;100.0;60.39;21.42;15.06;11
 3518993185;UCAS3;UNICASA;Consumo Cíclico;Móveis;0.86;100.0;43.14;4.13;2.52;8
 2940427821;BEES3;BANCO BANESTES;Não encontrado;Não encontrado;1.33;0.0;0.0;12.27;8.57;7
@@ -263,7 +263,7 @@ ID;Codigo;Empresa;Setor;Segmento;PVP;Tag_Along;Free_Float;Graham;Cotacao;Soma_To
 3911232474;BMEB3;BANCO MERCANTIL DO BRASIL;Não encontrado;Não encontrado;1.15;0.0;0.0;25.29;15.41;7
 3719833056;CBEE3;AMPLA ENERGIA E SERVICOS;Utilidade Pública;Energia Elétrica;0.7;0.0;0.2;0.0;15.9;4
 74689911;BIOM3;BIOMM;Saúde;Medicamentos e Outros Produtos;3.02;0.0;61.74;0.0;4.5;4
-1222495860;SOND3;SONDOTECNICA ENGENHARIA SOLOS S.A.;Não encontrado;Não encontrado;1.52;0.0;35.96;58.29;34.43;8
+194592691;SOND3;SONDOTECNICA ENGENHARIA SOLOS S.A.;Não encontrado;Não encontrado;1.52;0.0;35.96;58.29;34.43;8
 2066903909;CALI3;CONSTRUTORA ADOLPHO LINDENBERG;Consumo Cíclico;Incorporações;1.74;0.0;12.18;29.99;14.2;8
 1567743055;BRIV3;BANCO ALFA DE INVESTIMENTO;Não encontrado;Não encontrado;0.59;0.0;0.0;22.29;11.36;5
 1942001923;BMKS3;BICICLETAS MONARK;Consumo Cíclico;Bicicletas;0.68;0.0;22.0;760.79;297.7;8
@@ -301,49 +301,49 @@ ID;Codigo;Empresa;Setor;Segmento;PVP;Tag_Along;Free_Float;Graham;Cotacao;Soma_To
 3620288885;MTSA3;METISA;Bens Industriais;Máquinas e Equipamentos de Construção e Agrícolas;1.66;0.0;39.27;107.2;79.0;8
 937169720;BOAS3;BOA VISTA;Financeiro;Serviços Financeiros Diversos;1.84;100.0;99.67;7.26;7.98;10
 128042756;GPAR3;CIA CELG DE PARTICIPAÇÕES;Utilidade Pública;Energia Elétrica;4.92;0.0;0.1;7.41;44.51;4
-4245579235;MODL3;MODAL MAIS;Não encontrado;Não encontrado;1.82;0.0;0.0;0.0;3.08;4
-1774292446;CTKA3;KARSTEN;Consumo Cíclico;Fios e Tecidos;-0.84;0.0;12.86;0.0;18.0;5
-1152457384;MERC3;MERCANTIL DO BRASIL FINANCEIRA;Financeiro;Sociedade de Crédito e Financiamento;1.11;0.0;13.9;0.0;15.28;4
-512463316;CEGR3;CIA DISTRIBUIDORA DE GÁS DO RJ;Não encontrado;Não encontrado;18.43;0.0;0.16;11.61;85.0;4
-1387426704;MAPT3;CEMEPE INVESTIMENTOS S.A.;Financeiro;Outros;-4.45;0.0;3.89;0.0;30.05;4
-1842624364;CRDE3;CR2 EMPREENDIMENTOS;Consumo Cíclico;Incorporações;0.44;0.0;98.29;0.0;16.0;4
-173078059;IGBR3;IGB ELETRÔNICA S/A;Financeiro;Exploração de Imóveis;-0.34;0.0;100.0;0.0;175.99;8
-1420566080;PARD3;INSTITUTO HERMES PARDINI S.A;Saúde;Serviços Médicos, Hospitalares, Análises e Diagnósticos;5.3;100.0;0.0;6.88;20.25;6
-309202058;CASN3;CASAN;Não encontrado;Não encontrado;4.69;0.0;0.01;2.04;9.61;5
-862447397;MSPA3;EDITORA MELHORAMENTOS;Não encontrado;Não encontrado;0.36;0.0;11.8;86.97;46.19;3
-930303476;BRML3;BR MALLS;Financeiro;Exploração de Imóveis;0.61;100.0;100.0;15.24;8.26;7
-1072449459;DMMO3;DOMMO ENERGIA;Petróleo, Gás e Biocombustíveis;Exploração . Refino e Distribuição;-1.72;0.0;0.0;0.0;1.76;5
-4058323457;GETT3;GETNET ADQUIRENCIA E SERVIÇOS S.A.;Financeiro;Serviços Financeiros Diversos;1.24;100.0;10.09;3.74;2.4;5
-3770417019;SULA3;SUL AMÉRICA;Financeiro;Seguradoras;1.13;100.0;66.7;4.54;7.43;5
-2114758370;CEPE6;CELPE;Utilidade Pública;Energia Elétrica;2.1;0.0;0.0;21.99;43.0;3
-1849230174;TCNO3;TECNOSOLO ENGENHARIA;Bens Industriais;Engenharia Consultiva;-8.4;0.0;0.0;0.0;1.2;4
-2410452490;BLUT3;BLUE TECH SOLUTIONS E.Q.I. S.A.;Financeiro;Holdings Diversificadas;0.46;0.0;0.0;0.0;5.14;4
-3810419915;SHUL3;SCHULZ;Não encontrado;Não encontrado;8.26;0.0;56.6;8.19;27.65;7
-1554037819;FIGE3;INVESTIMENTOS BEMGE S.A.;Não encontrado;Não encontrado;0.18;0.0;1.8;73.95;11.99;5
-3336996393;FNCN3;FINANSINOS S.A. - CREDITO FINANC. E INVEST.;Financeiro;Sociedade de Crédito e Financiamento;0.96;0.0;16.36;42.5;14.25;7
-4218081300;TEKA3;TEKA;Consumo Cíclico;Fios e Tecidos;0.0;0.0;0.0;0.0;8.23;4
-2479661732;HETA3;HERCULES S.A. FABRICA DE TALHERES;Consumo Cíclico;Utensílios Domésticos;-0.14;0.0;47.8;0.0;96.0;6
-2748514798;LCAM3;LOCAMERICA;Consumo Cíclico;Aluguel de carros;1.74;100.0;0.0;14.13;24.15;3
-1371004443;BIDI3;BANCO INTER;Não encontrado;Não encontrado;1.08;0.0;0.0;0.0;3.49;2
-96870334;EEEL3;CEEE-GT;Utilidade Pública;Energia Elétrica;2.02;80.0;0.74;533.07;294.77;8
-2442436655;BBRK3;BRASIL BROKERS;Financeiro;Intermediação Imobiliária;5.14;100.0;39.11;0.0;0.8;3
-3948871514;CESP5;CESP;Não encontrado;Não encontrado;0.91;0.0;0.0;73.74;25.0;5
-3357493505;MOSI3;MOSAICO - ZOOM;Tecnologia da Informação;Programas e Serviços;1.56;100.0;0.0;5.56;8.24;5
-2506151562;POWE3;FOCUS ENERGIA HOLDING PARTICIPAÇÕES S.A.;Utilidade Pública;Energia Elétrica;0.99;100.0;47.61;10.68;10.9;5
-1680258964;ECPR3;ENCORPAR;Não encontrado;Não encontrado;1.21;0.0;1.35;0.0;90.25;3
-1067063038;GNDI3;NOTRE DAME INTERMÉDICA;-;-;0.0;0.0;0.0;0.0;0.0;4
-1117656005;LAME3;LOJAS AMERICANAS;Consumo Cíclico;Produtos Diversos;1.77;100.0;58.43;7.71;15.08;7
-3659158836;IGTA3;IGUATEMI;Financeiro;Exploração de Imóveis;1.25;100.0;0.0;26.33;29.49;6
-955012071;HGTX3;CIA HERING;Consumo Cíclico;Vestuário;3.67;100.0;0.0;9.35;38.52;6
-4005861796;TESA3;TERRA SANTA AGRO;Consumo não Cíclico;Agricultura;0.76;100.0;0.0;0.0;22.43;4
-2971798822;BTOW3;B2W DIGITAL;Consumo Cíclico;Produtos Diversos;0.89;100.0;36.03;0.0;14.67;6
-388716924;LINX3;LINX;Tecnologia da Informação;Programas e Serviços;4.37;100.0;78.12;0.0;37.34;6
-1953616;SMLS3;SMILES;Consumo Cíclico;Programas de Fidelização;4.09;100.0;0.0;16.0;22.4;8
-3055627031;MMXM3;MMX MINERAÇÃO E METÁLICOS S.A.;Materiais Básicos;Minerais Metálicos;-0.11;100.0;0.0;0.0;14.0;5
-1459149257;BSEV3;BIOSEV;Consumo não Cíclico;Açucar e Alcool;-10.84;100.0;0.0;0.0;9.0;7
-1771492739;BPAR3;BANCO BANPARA;Não encontrado;Não encontrado;0.74;0.0;0.0;234.04;132.71;6
-1842689984;VSPT3;FERROVIA CENTRO-ATLÂNTICA S.A.;Não encontrado;Não encontrado;0.37;0.0;0.0;0.0;5.0;3
-1813200880;MTIG3;METALGRÁFICA IGUAÇU S.A.;Não encontrado;Não encontrado;0.0;0.0;18.28;0.0;5.21;4
-3201563442;LUXM3;TREVISA;Não encontrado;Não encontrado;0.06;0.0;30.35;9.45;0.33;6
-1618725577;TKNO3;TEKNO S.A.;Não encontrado;Não encontrado;0.62;0.0;50.0;143.34;56.88;8
-1534971241;MGEL3;MANGELS INDUSTRIAL;Não encontrado;Não encontrado;13.35;0.0;49.03;69.27;74.1;4
+873657629;MODL3;MODAL MAIS;Não encontrado;Não encontrado;1.82;0.0;0.0;0.0;3.08;4
+3815315271;CTKA3;KARSTEN;Consumo Cíclico;Fios e Tecidos;-0.84;0.0;12.86;0.0;18.0;5
+4023857087;MERC3;MERCANTIL DO BRASIL FINANCEIRA;Financeiro;Sociedade de Crédito e Financiamento;1.11;0.0;13.9;0.0;15.28;4
+4007850186;CEGR3;CIA DISTRIBUIDORA DE GÁS DO RJ;Não encontrado;Não encontrado;18.43;0.0;0.16;11.61;85.0;4
+80982320;MAPT3;CEMEPE INVESTIMENTOS S.A.;Financeiro;Outros;-4.45;0.0;3.89;0.0;30.05;4
+3483855967;CRDE3;CR2 EMPREENDIMENTOS;Consumo Cíclico;Incorporações;0.44;0.0;98.29;0.0;16.0;4
+1728434767;IGBR3;IGB ELETRÔNICA S/A;Financeiro;Exploração de Imóveis;-0.34;0.0;100.0;0.0;175.99;8
+2118989956;PARD3;INSTITUTO HERMES PARDINI S.A;Saúde;Serviços Médicos, Hospitalares, Análises e Diagnósticos;5.3;100.0;0.0;6.88;20.25;6
+3360737023;CASN3;CASAN;Não encontrado;Não encontrado;4.69;0.0;0.01;2.04;9.61;3
+1149831051;MSPA3;EDITORA MELHORAMENTOS;Não encontrado;Não encontrado;0.36;0.0;11.8;86.97;46.19;3
+2998134225;BRML3;BR MALLS;Financeiro;Exploração de Imóveis;0.61;100.0;100.0;15.24;8.26;6
+1084715816;DMMO3;DOMMO ENERGIA;Petróleo, Gás e Biocombustíveis;Exploração . Refino e Distribuição;-1.72;0.0;0.0;0.0;1.76;5
+4036329149;GETT3;GETNET ADQUIRENCIA E SERVIÇOS S.A.;Financeiro;Serviços Financeiros Diversos;1.24;100.0;10.09;3.74;2.4;5
+2525497946;SULA3;SUL AMÉRICA;Financeiro;Seguradoras;1.13;100.0;66.7;4.54;7.43;5
+1640640214;CEPE6;CELPE;Utilidade Pública;Energia Elétrica;2.1;0.0;0.0;21.99;43.0;3
+2920372366;TCNO3;TECNOSOLO ENGENHARIA;Bens Industriais;Engenharia Consultiva;-8.4;0.0;0.0;0.0;1.2;4
+1298347537;BLUT3;BLUE TECH SOLUTIONS E.Q.I. S.A.;Financeiro;Holdings Diversificadas;0.46;0.0;0.0;0.0;5.14;4
+411338924;SHUL3;SCHULZ;Não encontrado;Não encontrado;8.26;0.0;56.6;8.19;27.65;7
+465244895;FIGE3;INVESTIMENTOS BEMGE S.A.;Não encontrado;Não encontrado;0.18;0.0;1.8;73.95;11.99;5
+3645655244;FNCN3;FINANSINOS S.A. - CREDITO FINANC. E INVEST.;Financeiro;Sociedade de Crédito e Financiamento;0.96;0.0;16.36;42.5;14.25;7
+1499686813;TEKA3;TEKA;Consumo Cíclico;Fios e Tecidos;0.0;0.0;0.0;0.0;8.23;4
+862756327;HETA3;HERCULES S.A. FABRICA DE TALHERES;Consumo Cíclico;Utensílios Domésticos;-0.14;0.0;47.8;0.0;96.0;6
+4010825324;LCAM3;LOCAMERICA;Consumo Cíclico;Aluguel de carros;1.74;100.0;0.0;14.13;24.15;3
+1115464709;BIDI3;BANCO INTER;Não encontrado;Não encontrado;1.08;0.0;0.0;0.0;3.49;2
+4146093675;EEEL3;CEEE-GT;Utilidade Pública;Energia Elétrica;2.02;80.0;0.74;533.07;294.77;7
+4186155742;BBRK3;BRASIL BROKERS;Financeiro;Intermediação Imobiliária;5.14;100.0;39.11;0.0;0.8;3
+463228766;CESP5;CESP;Não encontrado;Não encontrado;0.91;0.0;0.0;73.74;25.0;5
+2356949436;MOSI3;MOSAICO - ZOOM;Tecnologia da Informação;Programas e Serviços;1.56;100.0;0.0;5.56;8.24;5
+828265857;POWE3;FOCUS ENERGIA HOLDING PARTICIPAÇÕES S.A.;Utilidade Pública;Energia Elétrica;0.99;100.0;47.61;10.68;10.9;5
+2326055612;ECPR3;ENCORPAR;Não encontrado;Não encontrado;1.21;0.0;1.35;0.0;90.25;3
+4098105367;GNDI3;NOTRE DAME INTERMÉDICA;-;-;0.0;0.0;0.0;0.0;0.0;3
+1735277008;LAME3;LOJAS AMERICANAS;Consumo Cíclico;Produtos Diversos;1.77;100.0;58.43;7.71;15.08;7
+3385245619;IGTA3;IGUATEMI;Financeiro;Exploração de Imóveis;1.25;100.0;0.0;26.33;29.49;4
+3609181772;HGTX3;CIA HERING;Consumo Cíclico;Vestuário;3.67;100.0;0.0;9.35;38.52;6
+1450743252;TESA3;TERRA SANTA AGRO;Consumo não Cíclico;Agricultura;0.76;100.0;0.0;0.0;22.43;4
+3117934613;BTOW3;B2W DIGITAL;Consumo Cíclico;Produtos Diversos;0.89;100.0;36.03;0.0;14.67;6
+2265295942;LINX3;LINX;Tecnologia da Informação;Programas e Serviços;4.37;100.0;78.12;0.0;37.34;6
+259616868;SMLS3;SMILES;Consumo Cíclico;Programas de Fidelização;4.09;100.0;0.0;16.0;22.4;8
+2140587843;MMXM3;MMX MINERAÇÃO E METÁLICOS S.A.;Materiais Básicos;Minerais Metálicos;-0.11;100.0;0.0;0.0;14.0;5
+1967964391;BSEV3;BIOSEV;Consumo não Cíclico;Açucar e Alcool;-10.84;100.0;0.0;0.0;9.0;7
+1451376122;BPAR3;BANCO BANPARA;Não encontrado;Não encontrado;0.74;0.0;0.0;234.04;132.71;6
+2046282229;VSPT3;FERROVIA CENTRO-ATLÂNTICA S.A.;Não encontrado;Não encontrado;0.37;0.0;0.0;0.0;5.0;3
+2965770035;MTIG3;METALGRÁFICA IGUAÇU S.A.;Não encontrado;Não encontrado;0.0;0.0;18.28;0.0;5.21;4
+2703109506;LUXM3;TREVISA;Não encontrado;Não encontrado;0.06;0.0;30.35;9.45;0.33;6
+3874964545;TKNO3;TEKNO S.A.;Não encontrado;Não encontrado;0.62;0.0;50.0;143.34;56.88;8
+1966374895;MGEL3;MANGELS INDUSTRIAL;Não encontrado;Não encontrado;13.35;0.0;49.03;69.27;74.1;4

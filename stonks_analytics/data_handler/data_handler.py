@@ -2,7 +2,6 @@ from stonks_analytics.data_handler.pandas_handler import PandasHandler
 
 
 class DataHandler(PandasHandler):
-
     columns = [
         "Empresa",
         "Cotação",

@@ -4,7 +4,6 @@ from pathlib import Path
 
 
 class PandasHandler:
-
     loaded_data: pd.DataFrame  # expected value is a df
 
     columns: list[str]  ## same

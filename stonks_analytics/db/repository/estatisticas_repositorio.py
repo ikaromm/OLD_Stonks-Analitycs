@@ -19,7 +19,6 @@ class EstatisticasRepositorio(Repositorio):
 
     def obter_por_empresa_codigo(self, empresa_codigo: str) -> Estatisticas:
         with Session(self.engine) as sessao:
-
             query = (
                 Select(self.entidade)
                 .join(Empresa)

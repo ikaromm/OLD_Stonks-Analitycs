@@ -1,3 +1,6 @@
 from stonks_analytics.data_handler.data_handler import DataHandler
 from stonks_analytics.data_handler.question_handler import QuestionHandler
 from stonks_analytics.data_handler.data_sql_handler import DataSqlHandler
+from stonks_analytics.data_handler.fii_tratado import FiiTratado
+from stonks_analytics.data_handler.data_fii_handler import DataFiiHandler
+from stonks_analytics.data_handler.question_fii_handler import QuestionFiiHandler

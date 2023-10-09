@@ -66,14 +66,18 @@ def extract_numeric_from_xpath(xpath: str, browser: webdriver.Chrome) -> str:
     value = browser.find_element("xpath", xpath).text.replace(".", "").replace(",", ".")
 
     scale = None
-    if "Bilhões" in value:
+
+    if "Bilhões" in value or "B" in value:
         scale = 1000000000
 
-    elif "Milhões" in value:
+    elif "Milhões" in value or "M" in value:
         scale = 1000000
 
     elif "Mil" in value:
         scale = 1000
+
+    elif "K" in value:
+        scale = 1000    
 
     if "%" in value:
         percentage_text = value.rstrip("%")  # Remove the percentage sign from the end
