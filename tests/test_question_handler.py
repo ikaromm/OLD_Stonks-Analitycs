@@ -43,7 +43,7 @@ class TestQuestionHandler(TestCase):
     def test_append_incomplete_dict(self):
         with mock.patch("builtins.open", mock.mock_open()) as mock_open:
             mock_open.side_effect = FileNotFoundError
-            
+
             handler = QuestionHandler()
             handler.load_data()
 

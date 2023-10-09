@@ -10,6 +10,7 @@ python-dotenv = "*"
 numpy = "*"
 bardapi = "*"
 sqlalchemy = "*"
+tomli = "*"
 
 [dev-packages]
 black = "*"

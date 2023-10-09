@@ -2,6 +2,8 @@ from stonks_analytics.db.entity import Base
 
 from sqlalchemy import ForeignKey, Column, Integer, String, Float, DateTime
 
+from datetime import datetime
+
 
 class Estatisticas(Base):
     __tablename__ = 'estatisticas'

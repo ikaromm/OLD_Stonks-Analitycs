@@ -5,10 +5,6 @@ from unittest import TestCase
 
 class TestEmpresa(TestCase):
     def test_class_instance(self):
-
-        empresa = Empresa(
-            codigo='TESTE',
-            nome='Teste'
-        )
+        empresa = Empresa(codigo="TESTE", nome="Teste")
 
         self.assertIsInstance(empresa, Empresa)

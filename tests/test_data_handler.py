@@ -12,12 +12,12 @@ class TestDataHandler(TestCase):
     def test_append(self):
         with mock.patch("builtins.open", mock.mock_open()) as mock_open:
             mock_open.side_effect = FileNotFoundError
-            
+
             handler = DataHandler()
             handler.load_data()
 
             dados = {
-                "Empresa": 'Stonks',
+                "Empresa": "Stonks",
                 "Cotação": 0,
                 "Divida Liquida": 0,
                 "Custos": 0,
@@ -43,11 +43,10 @@ class TestDataHandler(TestCase):
 
             self.assertEqual(len(handler.loaded_data), 1)
 
-            dados['Cotação'] = 1
+            dados["Cotação"] = 1
             handler.append(dados)
 
             self.assertEqual(len(handler.loaded_data), 1)
 
-            dados = handler.get_dados_from_empresa('Stonks')
-            self.assertEqual(dados['Cotação'], 1)
-
+            dados = handler.get_dados_from_empresa("Stonks")
+            self.assertEqual(dados["Cotação"], 1)
