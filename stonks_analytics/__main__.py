@@ -53,7 +53,7 @@ def main():
         for fii in tabela["FUNDOS"]:
             tickers.append(fii)
 
-    for item in tickers[345:]:
+    for item in tickers:
         unique_sequence = uniqueid()
         empresa = item
 
