@@ -6,6 +6,7 @@ from datetime import datetime
 
 
 class Estatisticas(Base):
+    
     __tablename__ = "estatisticas"
 
     id = Column(Integer, primary_key=True)
