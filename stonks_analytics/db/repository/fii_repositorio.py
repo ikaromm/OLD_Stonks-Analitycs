@@ -7,7 +7,7 @@ from sqlalchemy import Select
 
 
 class FiiRepositorio(Repositorio):
-    entidade = Fundo
+    entidade = Fii
 
     def obter_por_fundo(self, fundo_id: int) -> Fii:
         with Session(self.engine) as sessao:
@@ -21,8 +21,8 @@ class FiiRepositorio(Repositorio):
         with Session(self.engine) as sessao:
             query = (
                 Select(self.entidade)
-                .join(fundo)
-                .where(fundo.codigo == fundo_codigo)
+                .join(Fundo)
+                .where(Fundo.codigo == fundo_codigo)
             )
 
             return sessao.execute(query).first()
