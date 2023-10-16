@@ -77,6 +77,7 @@ def main():
             datatrat = FiiTratado()
             datatrat.load_data()
 
+        
         # empresa = input("Digite o codigo da empresa: ")
 
         browser = webdriver.Chrome(options=set_chrome_options())
