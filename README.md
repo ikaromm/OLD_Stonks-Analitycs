@@ -8,6 +8,8 @@ A ideia do projeto consiste em fazer buscas de certas perguntas no site investid
 2) poder atualizar apenas uma empresa 
 3) Como rodar uma IA para otimizar as questions (Fazer um backtest da carteira)
 4) Levar tudo para o DB
+5) Identificar as empresas com capital menor que 10B e utilizar métricas específicas para apurar melhor na hora da nota.
+6) Terminar de adicionar todas as métricas no README.md
 
 
 
