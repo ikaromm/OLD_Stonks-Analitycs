@@ -4,15 +4,18 @@ from stonks_analytics.data_handler.pandas_handler import PandasHandler
 class FiiTratado(PandasHandler):
     columns = [
         "Fundo",
-        "Dy12m",
-        "Cotação",
+        "Tipo de Fundo",
+        "Gestão",
+        "Segmento",
         "PVP",
+        "Dy5anos",
+        "Dy12m",
+        "Cotação",        
         "Prazo de Duração",
         "Taxa de ADM",
         "Vacancia",
         "Ult. Rendimento",
         "QNT Imoveis",
-        "Dy5anos",
         "Pontuação",
     ]
 

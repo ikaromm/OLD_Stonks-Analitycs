@@ -42,9 +42,9 @@ def main():
 
     if escolha == "A":
         for acao in tabela["Código"]:
-            if acao.endswith("4"):
-                if any(item.endswith("3") for item in tabela["Código"]):
-                    continue
+            # if acao.endswith("4"):
+            #     if any(item.endswith("3") for item in tabela["Código"]):
+            #         continue
 
             tickers.append(acao)
     ###### storage all tickers
@@ -536,7 +536,10 @@ def main():
                     "Ult. Rendimento": ult_rend,
                     "QNT Imoveis": imv_values,
                     "Dy5anos": dy5anos,
-                    "Pontuação": sum_of_variables,           
+                    "Pontuação": sum_of_variables,   
+                    "Segmento": segmento,
+                    "Gestão": gestao,
+                    "Tipo de Fundo": tipo_fundo,     
 
                 }
             )
