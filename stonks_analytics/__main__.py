@@ -42,9 +42,9 @@ def main():
 
     if escolha == "A":
         for acao in tabela["Código"]:
-            if acao.endswith("4"):
-                if any(item.endswith("3") for item in tabela["Código"]):
-                    continue
+            # if acao.endswith("4"):
+            #     if any(item.endswith("3") for item in tabela["Código"]):
+            #         continue
 
             tickers.append(acao)
     ###### storage all tickers
@@ -53,7 +53,7 @@ def main():
         for fii in tabela["FUNDOS"]:
             tickers.append(fii)
 
-    for item in tickers[345:]:
+    for item in tickers:
         unique_sequence = uniqueid()
         empresa = item
 
@@ -77,6 +77,7 @@ def main():
             datatrat = FiiTratado()
             datatrat.load_data()
 
+        
         # empresa = input("Digite o codigo da empresa: ")
 
         browser = webdriver.Chrome(options=set_chrome_options())
@@ -376,7 +377,7 @@ def main():
             pvp_less_5 = 1 if float(pvp) < 5 else 0
             liq_ebta = 1 if (float(divida_liquida) / float(ebita)) < 2 else 0
             pl_less_10 = 1 if float(pl) < 15 else 0
-            more_than_10y = 1 if float(existence_time) > 30 else 0
+            more_than_10y = 1 if float(existence_time) > 10 else 0
             luc_op = 1 if float(ebit) > 0 else 0
             graham_formula = (
                 float((22.5 * float(VPA) * float(LPA)) ** (1 / 2))
@@ -450,9 +451,10 @@ def main():
             dadosql.save_data()
 
             num_columns = len(question.columns) - 4
+
             print(company_name)
-            print(data.loaded_data)
-            print(question.loaded_data)
+            # print(data.loaded_data)
+            # print(question.loaded_data)
             print(dadosql.loaded_data)
             print(f"A soma das perguntas é {soma_tot} e o maximo = {num_columns}")
             print(
@@ -534,7 +536,10 @@ def main():
                     "Ult. Rendimento": ult_rend,
                     "QNT Imoveis": imv_values,
                     "Dy5anos": dy5anos,
-                    "Pontuação": sum_of_variables,           
+                    "Pontuação": sum_of_variables,   
+                    "Segmento": segmento,
+                    "Gestão": gestao,
+                    "Tipo de Fundo": tipo_fundo,     
 
                 }
             )
