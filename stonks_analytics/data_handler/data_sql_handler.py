@@ -3,11 +3,11 @@ from stonks_analytics.data_handler.pandas_handler import PandasHandler
 
 class DataSqlHandler(PandasHandler):
     columns = [
-        "ID",
-        "Codigo",
-        "Empresa",
-        "Setor",
-        "Segmento",
+        "id",
+        "codigo",
+        "empresa",
+        "setor",
+        "segmento",
         "PVP",
         "Tag_Along",
         "Free_Float",
@@ -20,8 +20,8 @@ class DataSqlHandler(PandasHandler):
         super().__init__(file_path)
 
     def append(self, dadosql: dict):
-        if dadosql["Empresa"] in self.loaded_data["Empresa"].unique():
-            self.loaded_data.loc[self.loaded_data["Empresa"] == dadosql["Empresa"]] = [
+        if dadosql["empresa"] in self.loaded_data["empresa"].unique():
+            self.loaded_data.loc[self.loaded_data["empresa"] == dadosql["empresa"]] = [
                 dadosql[column] if column in dadosql else None
                 for column in self.columns
             ]

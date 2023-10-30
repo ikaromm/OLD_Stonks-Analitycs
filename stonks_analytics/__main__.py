@@ -432,11 +432,11 @@ def main():
 
             dadosql.append(
                 {
-                    "ID": next(unique_sequence),
-                    "Codigo": empresa,
-                    "Empresa": company_name,
-                    "Setor": setor,
-                    "Segmento": segmento,
+                    "id": next(unique_sequence),
+                    "codigo": empresa,
+                    "empresa": company_name,
+                    "setor": setor,
+                    "segmento": segmento,
                     "PVP": round(float(pvp), 2),
                     "Tag_Along": tag_along,
                     "Free_Float": free_float,
