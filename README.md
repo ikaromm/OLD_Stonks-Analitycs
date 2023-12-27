@@ -5,22 +5,18 @@ A ideia central deste projeto é realizar pesquisas direcionadas no site "Invest
 
 **Ideia Secundária:**
 Além disso, o projeto também se concentra na otimização dos pesos atribuídos a empresas selecionadas na carteira de investimentos. Isso visa melhorar o desempenho anual da carteira em comparação ao Ibovespa, um índice de referência amplamente reconhecido no mercado financeiro. A ideia secundária é potencializar o rendimento da carteira por meio de alocações eficientes, garantindo um equilíbrio entre diversificação e exposição ao mercado.
-# A resolver:
 
-1) Atualizar a cotação de forma inteligente (utilizar yahoo)
-2) poder atualizar apenas uma empresa 
-4) Levar tudo para o DB
-5) Identificar as empresas com capital menor que 10B e utilizar métricas específicas para apurar melhor na hora da nota.
+# Refatoração: 
 
+O projeto inicial era um monolito que abrangia funcionalidades de scraping de dados no site investidor10, concentrando-se em informações sobre ações e fundos imobiliários. Apesar de ser funcional, essa abordagem enfrentava limitações em termos de escalabilidade, manutenção e adaptabilidade para futuras expansões.
 
+Decidi realizar uma refatoração abrangente, seguindo uma abordagem de arquitetura modular e dividindo as responsabilidades em dois novos repositórios.
 
-# Resolvido:
-1) Criar CSV
-2) Como conectar o bard (feito porém não funciona no formato que precisa)
-3) Como manter as empresas no csv e só atualizar os valores
-4) Criar mais métricas para o questions
-5) Como capturar de uma só vez todas as empresas do investidor 10
-6) Como rodar uma IA para otimizar pesos (Fazer um backtest da carteira)
+No repositório de Webscraper, centralizei as funcionalidades relacionadas ao scraping de dados do site. Implementei o webscraper específico para o site-alvo, estruturando-o para extrair dados de ações e fundos imobiliários. Gerenciei requisições, tratei erros e manipulei eficientemente os dados coletados.
+
+No repositório de Machine Learning, foquei no desenvolvimento de modelos de machine learning para análise preditiva ou classificação, utilizando os dados coletados pelo webscraper. Implementei e treinei modelos, avaliei seu desempenho, ajustei parâmetros e otimizei o processo. Preparei dados e integrei o sistema com ferramentas de análise e visualização.
+
+Com essa abordagem, busquei benefícios como escalabilidade eficiente, manutenção simplificada, reusabilidade de módulos em outros projetos e facilidade de testes. A modularidade permite uma evolução ágil do sistema, promovendo flexibilidade e eficácia ao longo do tempo.
 
 # Comparativo da carteira:
 Neste ponto do projeto, realizei uma comparação entre minha carteira de investimentos e o benchmark escolhido, que no meu caso foi o Ibovespa. A ideia era avaliar o desempenho da minha carteira em relação a um ponto de referência amplamente reconhecido no mercado financeiro.
